@@ -1,3 +1,4 @@
+import json
 import functions_framework
 
 # Register a CloudEvent function with the Functions Framework
@@ -5,4 +6,4 @@ import functions_framework
 def my_cloudevent_function(cloud_event):
     # Your code here
     # Access the CloudEvent data payload via cloud_event.data
-    print(cloud_event.data)
+    print(json.dumps(cloud_event.data))
