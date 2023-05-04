@@ -1,7 +1,7 @@
 from src.gcp.google_service import list_resource
 from src.port.entities import create_entities_json
 from src.port.client import PortClient
-from consts import PORT_API_URL
+from consts import EXPORTER_NAME, PORT_API_URL
 from secret_config import client_id, client_secret
 from config import get_config
 from itertools import product, chain
@@ -29,8 +29,7 @@ def get_entities(resource):
 
 def export_entities():
     entities = chain.from_iterable(get_entities(resource) for resource in CONFIG.get('resources'))
-        
 
-    port_client = PortClient(client_id, client_secret, 'paz', PORT_API_URL)
+    port_client = PortClient(client_id, client_secret, EXPORTER_NAME, PORT_API_URL)
     for entity in entities:
         port_client.upsert_entity(entity)
