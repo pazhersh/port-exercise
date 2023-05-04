@@ -1,0 +1,30 @@
+{
+    "resources": [
+        {
+            "kind": "compute#instanceList",
+            "itemsKind": "compute#instance",
+            "service": "compute",
+            "resourceKind": "instances",
+            "selectors": {
+                "project": [
+                    "plenary-ridge-385508"
+                ],
+                "zone": [
+                    "us-west4-b"
+                ]
+            },
+            "portEntityMapping": [
+                {
+                    "identifier": ".name",
+                    "title": ".name",
+                    "blueprint": "\"vmi\"",
+                    "properties": {
+                        "name": ".name",
+                        "description": ".description",
+                        "cpu_platform": ".cpuPlatform"
+                    }
+                }
+            ]
+        }
+    ]
+}
