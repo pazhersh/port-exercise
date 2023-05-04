@@ -1,8 +1,6 @@
 {
     "resources": [
         {
-            "kind": "compute#instanceList",
-            "itemsKind": "compute#instance",
             "service": "compute",
             "resourceKind": "instances",
             "selectors": {
@@ -24,6 +22,31 @@
                         "name": ".name",
                         "description": ".description",
                         "cpu_platform": ".cpuPlatform"
+                    }
+                }
+            ]
+        },
+        
+        {
+            "service": "storage",
+            "resourceKind": "buckets",
+            "selectors": {
+                "project": [
+                    "plenary-ridge-385508",
+                    "fake-project-to-test-for-error"
+                ]
+            },
+            "portEntityMapping": [
+                {
+                    "identifier": ".name",
+                    "title": ".name",
+                    "blueprint": "\"storage-bucket\"",
+                    "properties": {
+                        "name": ".name",
+                        "id": ".id",
+                        "location": ".location",
+                        "storage-class": ".storageClass",
+                        "time-created": ".timeCreated"
                     }
                 }
             ]

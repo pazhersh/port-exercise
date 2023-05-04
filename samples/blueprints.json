@@ -1,0 +1,76 @@
+{
+    "blueprints": [
+        {
+            "identifier": "vmi",
+            "description": "gcp vmi",
+            "title": "Virtual Machine instance",
+            "icon": "Service",
+            "schema": {
+                "properties": {
+                    "cpu_platform": {
+                        "title": "cpu platform",
+                        "icon": "CPU",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "name",
+                        "icon": "Service",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "description",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cpu_platform",
+                    "name"
+                ]
+            },
+            "mirrorProperties": {},
+            "calculationProperties": {},
+            "relations": {}
+        },
+        {
+            "identifier": "storage-bucket",
+            "description": "a gcp data storage backet",
+            "title": "storage-bucket",
+            "icon": "Bucket",
+            "schema": {
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "icon": "Stripe",
+                        "type": "string"
+                    },
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "icon": "Stripe",
+                        "type": "string"
+                    },
+                    "location": {
+                        "title": "location",
+                        "icon": "Stripe",
+                        "type": "string"
+                    },
+                    "time-created": {
+                        "title": "time-created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "storage-class": {
+                        "title": "storage-class",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "mirrorProperties": {},
+            "calculationProperties": {},
+            "relations": {}
+        }
+    ]
+}

@@ -6,7 +6,7 @@ from secret_config import client_id, client_secret
 from config import get_config
 from itertools import product, chain
 
-CONFIG = get_config()
+CONFIG = get_config('samples/config.json')
 
 def generate_selector_permutations(selectors):
     values_permutations = product(*selectors.values())
