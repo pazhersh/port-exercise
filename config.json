@@ -7,10 +7,12 @@
             "resourceKind": "instances",
             "selectors": {
                 "project": [
-                    "plenary-ridge-385508"
+                    "plenary-ridge-385508",
+                    "fake-project-to-test-for-error"
                 ],
                 "zone": [
-                    "us-west4-b"
+                    "us-west4-b",
+                    "fake-zone-to-test-for-error"
                 ]
             },
             "portEntityMapping": [
