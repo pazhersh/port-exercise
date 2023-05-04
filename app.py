@@ -1,10 +1,10 @@
-from src.gcp.google_service import get_instances
+from src.gcp.google_service import list_resource
 from src.port.entities import create_entities_json
 from src.port.client import PortClient
 from consts import PORT_API_URL
 from secret_config import client_id, client_secret
 
-vms = get_instances()
+vms = list_resource('compute', 'instances', zone='us-west4-b', project='plenary-ridge-385508')
 port_client = PortClient(client_id, client_secret, 'paz', PORT_API_URL)
 
 mappings = [

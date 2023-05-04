@@ -1,21 +1,12 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# If modifying these scopes, delete the file token.json.
 
-
-service = 'compute'
-zone = 'us-west4-b'
-project = 'plenary-ridge-385508'
-
-request_route = f'{service}/v1/projects/{project}/zones/{zone}/instances'
-request_endpoint = f'https://{service}.googleapis.com'
-request_url = f'{request_endpoint}/{request_route}'
-
-def get_instances():
+def list_resource(service_name, resource_name, service_version = 'v1', **request_kwargs):
     try:
-        service_build = build(service, 'v1')
-        instances = service_build.instances().list(project=project, zone=zone).execute()
-        return instances
+        service_build = build(service_name, service_version)
+        resource_api = getattr(service_build, resource_name)
+        resource_list = resource_api().list(**request_kwargs).execute()
+        return resource_list
     except HttpError as err:
         print(err)
