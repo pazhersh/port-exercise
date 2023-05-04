@@ -1,10 +1,3 @@
-from __future__ import print_function
-
-import os.path
-
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
@@ -19,7 +12,7 @@ request_route = f'{service}/v1/projects/{project}/zones/{zone}/instances'
 request_endpoint = f'https://{service}.googleapis.com'
 request_url = f'{request_endpoint}/{request_route}'
 
-def service():
+def get_instances():
     try:
         service_build = build(service, 'v1')
         instances = service_build.instances().list(project=project, zone=zone).execute()
