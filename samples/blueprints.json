@@ -71,6 +71,25 @@
             "mirrorProperties": {},
             "calculationProperties": {},
             "relations": {}
-        }
+        },
+        {
+            "identifier": "pubsub-topic",
+            "title": "pubsub-topic",
+            "icon": "Kafka",
+            "schema": {
+              "properties": {
+                "name": {
+                  "title": "name",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            },
+            "mirrorProperties": {},
+            "calculationProperties": {},
+            "relations": {}
+          }
     ]
 }

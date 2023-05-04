@@ -1,7 +1,23 @@
 import jq
 
+def create_entities_json(resources_object, selector_jq_query, jq_mappings):
+    def run_jq_query(jq_query):
+        return jq.first(jq_query, resources_object)
+    
+    if selector_jq_query and not run_jq_query(selector_jq_query):
+        return []
+    
+    entities = []
+    for mapping in jq_mappings:
+        resources_list = run_jq_query(mapping.get('entrypoint'))
+        if resources_list:
+            for resource_object in resources_list:
+                entities.extend(create_single_resource_entities_json(resource_object, [mapping]))
+                # [mapping] for mapping-list is kinda silly; TODO - rework this file
+    return entities
 
-def create_entities_json(resource_object, selector_jq_query, jq_mappings, action_type='upsert'):
+
+def create_single_resource_entities_json(resource_object, jq_mappings, action_type='upsert'):
     def run_jq_query(jq_query):
         return jq.first(jq_query, resource_object)
 
@@ -18,8 +34,6 @@ def create_entities_json(resource_object, selector_jq_query, jq_mappings, action
               "blueprint": mapping.get('blueprint', '').strip('\"') or raise_missing_exception('blueprint', mapping)}
              for mapping in jq_mappings])
 
-    if selector_jq_query and not run_jq_query(selector_jq_query):
-        return []
 
     return [{k: v for k, v in {
         "identifier": run_jq_query(mapping.get('identifier', 'null')) or raise_missing_exception('identifier', mapping),

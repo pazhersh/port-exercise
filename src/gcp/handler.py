@@ -14,16 +14,15 @@ def generate_selector_permutations(selectors):
 
 def get_entities(resource):
     service = resource.get('service')
-    resource_kind = resource.get('resourceKind')
+    resource_path = resource.get('resourcePath')
     resource_selectors = resource.get('selectors')
     selectors_permutations = generate_selector_permutations(resource_selectors)
     resource_mapping = resource.get('portEntityMapping')
 
     entities = []
     for selectors in selectors_permutations:
-        gcp_resources = list_resource(service, resource_kind, **selectors) or {}
-        for gcp_resource in gcp_resources.get('items', []):
-            entities.extend(create_entities_json(gcp_resource, selector_jq_query=None, jq_mappings=resource_mapping))
+        gcp_resources = list_resource(service, resource_path, **selectors) or {}
+        entities.extend(create_entities_json(gcp_resources, selector_jq_query=None, jq_mappings=resource_mapping))
 
     return entities
 

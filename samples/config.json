@@ -2,7 +2,9 @@
     "resources": [
         {
             "service": "compute",
-            "resourceKind": "instances",
+            "resourcePath": [
+                "instances"
+            ],
             "selectors": {
                 "project": [
                     "plenary-ridge-385508",
@@ -15,6 +17,7 @@
             },
             "portEntityMapping": [
                 {
+                    "entrypoint": ".items",
                     "identifier": ".name",
                     "title": ".name",
                     "blueprint": "\"vmi\"",
@@ -26,10 +29,11 @@
                 }
             ]
         },
-        
         {
             "service": "storage",
-            "resourceKind": "buckets",
+            "resourcePath": [
+                "buckets"
+            ],
             "selectors": {
                 "project": [
                     "plenary-ridge-385508",
@@ -38,6 +42,7 @@
             },
             "portEntityMapping": [
                 {
+                    "entrypoint": ".items",
                     "identifier": ".name",
                     "title": ".name",
                     "blueprint": "\"storage-bucket\"",
@@ -47,6 +52,30 @@
                         "location": ".location",
                         "storage-class": ".storageClass",
                         "time-created": ".timeCreated"
+                    }
+                }
+            ]
+        },
+        {
+            "service": "pubsub",
+            "resourcePath": [
+                "projects",
+                "topics"
+            ],
+            "selectors": {
+                "project": [
+                    "projects/plenary-ridge-385508",
+                    "projects/fake-project-to-test-for-error"
+                ]
+            },
+            "portEntityMapping": [
+                {
+                    "entrypoint": ".topics",
+                    "identifier": ".name | gsub(\"/\"; \"_\")",
+                    "title": ".name",
+                    "blueprint": "\"pubsub-topic\"",
+                    "properties": {
+                        "name": ".name"
                     }
                 }
             ]
