@@ -20,9 +20,11 @@ class PortClient:
     def upsert_entity(self, entity):
         blueprint_id = entity.pop('blueprint')
         logger.info(f"Upsert entity: {entity.get('identifier')} of blueprint: {blueprint_id}")
-        requests.post(f'{self.api_url}/blueprints/{blueprint_id}/entities', json=entity,
+        response = requests.post(f'{self.api_url}/blueprints/{blueprint_id}/entities', json=entity,
                       headers=self.headers,
-                      params={'upsert': 'true', 'merge': 'true'}).raise_for_status()
+                      params={'upsert': 'true', 'merge': 'true'})
+        response.raise_for_status()
+        return response
 
     def delete_entity(self, entity):
         blueprint_id = entity.pop('blueprint')
