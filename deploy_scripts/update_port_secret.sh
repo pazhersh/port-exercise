@@ -1,0 +1,1 @@
+gcloud secrets versions add port-login --data-file secrets/port-login.json

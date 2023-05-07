@@ -1,8 +1,8 @@
+from config import get_from_secret
 from src.gcp.google_service import list_resource
 from src.port.entities import create_entities_json
 from src.port.client import PortClient
 from consts import EXPORTER_NAME, PORT_API_URL
-from secret_config import client_id, client_secret
 from itertools import product, chain
 
 def generate_selector_permutations(selectors):
@@ -25,8 +25,9 @@ def generate_entities(resource):
 
 def export_entities(config):
     entities = chain.from_iterable(generate_entities(resource) for resource in config.get('resources'))
+    port_login = get_from_secret('PORT_LOGIN')
 
-    port_client = PortClient(client_id, client_secret, EXPORTER_NAME, PORT_API_URL)
+    port_client = PortClient(port_login.get('clientId'), port_login.get('clientSecret'), EXPORTER_NAME, PORT_API_URL)
     for entity in entities:
         print('exporting entity:', entity) # TODO: make logs work with GCP
         port_client.upsert_entity(entity)
