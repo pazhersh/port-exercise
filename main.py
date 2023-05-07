@@ -1,8 +1,11 @@
+import base64
+import json
 import functions_framework
 from src.gcp import handler
 
-@functions_framework.http
-def export_resources(request):
-    request_json = request.get_json(silent=True)
-    handler.export_entities(request_json) # TODO: don't wait for operation to finish before returning result
-    return 'finished export resources operation'
+@functions_framework.cloud_event
+def export_resources(cloud_event):
+    raw_data = cloud_event.data.get('message').get('data')
+    data_string = base64.b64decode(raw_data)
+    configuration = json.loads(data_string)
+    handler.export_entities(configuration)
