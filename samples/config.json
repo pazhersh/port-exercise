@@ -2,9 +2,7 @@
     "resources": [
         {
             "service": "compute",
-            "resourcePath": [
-                "instances"
-            ],
+            "resourcePath": ["instances"],
             "selectors": {
                 "project": [
                     "plenary-ridge-385508",
@@ -31,9 +29,7 @@
         },
         {
             "service": "storage",
-            "resourcePath": [
-                "buckets"
-            ],
+            "resourcePath": ["buckets"],
             "selectors": {
                 "project": [
                     "plenary-ridge-385508",
@@ -58,10 +54,7 @@
         },
         {
             "service": "pubsub",
-            "resourcePath": [
-                "projects",
-                "topics"
-            ],
+            "resourcePath": ["projects", "topics"],
             "selectors": {
                 "project": [
                     "projects/plenary-ridge-385508",
