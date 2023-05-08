@@ -6,12 +6,12 @@
             "selectors": {
                 "project": [
                     "port-exporter",
-                    "fake-project-to-test-for-error"
+                    "fake-project"
                 ],
                 "zone": [
                     "us-west4-b",
                     "us-central1", 
-                    "fake-zone-to-test-for-error"
+                    "fake-zone"
                 ]
             },
             "portEntityMapping": [
@@ -34,7 +34,7 @@
             "selectors": {
                 "project": [
                     "port-exporter",
-                    "fake-project-to-test-for-error"
+                    "fake-project"
                 ]
             },
             "portEntityMapping": [
@@ -59,7 +59,7 @@
             "selectors": {
                 "project": [
                     "projects/port-exporter",
-                    "projects/fake-project-to-test-for-error"
+                    "projects/fake-project"
                 ]
             },
             "portEntityMapping": [

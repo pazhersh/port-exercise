@@ -77,3 +77,13 @@ terraform apply -auto-aprove
 ### Enjoy life
 
 You're done deploying!
+
+## What now?
+
+So you have the solution deployed, but how do you use it now that its up there in the cloud?
+
+Well first of all, it should work on its own. By default the scheduler job is set to run every 5th minute, and therefore, if everything was deployed currectly, than it should export resources to port every 5 minutes. (you can also manually cause the job to execute on other minutes if you so desire; its accessible in the scheduler job page)
+
+Otherwise, you could push messages to entity events (the PubSub). The message should be the config-file you want the exporter to run with (see the chapter about writing a config.json).
+
+Don't like to work hard and manually? GCP has a whole lot of ways to use eventarc to push messages to PubSubs, you just have to decide what and when! and then configure it! oh and don't forget to make sure that the message is config.json complient!
