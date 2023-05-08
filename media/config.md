@@ -43,6 +43,8 @@ The file structure:
 }
 ```
 
-Still confused? Than you can take at our samples than!
+Still confused? Than you can take at our samples then!
+
 [config.json](/samples/config.json) - a config.json example. note that the regions and zones are not neccessarily real and some are there just as an example.
+
 [blueprints.json](/samples/blueprints.json) - the blueprint definitions that the sample config.json is configured for.
