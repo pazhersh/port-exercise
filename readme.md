@@ -27,16 +27,18 @@ The export function's source architecture (its this library! yay!) is described 
 ## Configuration, Configuration, Configuration
 You'll probably first want to configure your deployment.
 
-There are two things you'll need to set manually:
+There are three things you'll need to set manually:
 - `secrets/port_login.json` - This is where you set the login parameters to port so that the exporter function could connect to it. The required values could be found on the bottom left of [port website](https://www.getport.io), under `Help` > `Credentials`.
-- `config.json` - You'll probably want to [write your own one](/media/config.md) and use. If you do, go in the terraform main.tf file and change the `raw_config` variable to your config file (should be `= file(path/to/your/file)`). \
+- `config.json` - You'll probably want to [write your own one](/media/config.md) and use. If you do, go in the `terraform/main.tf` file and change the `raw_config` variable to your config file (should be `= file(path/to/your/file)`). \
 By default `samplse/config.json` will be used.
+- Depending on how you created the google repo, you might want to change the exporter functions' build parameters; Namely `build_config.source.repo_source.repo_name` and `build_config.source.repo_source.branch_name` in `terraform/resource.tf`
 
 
 For your first deployment you could configure your port with `samples/blueprints.json` and use `samples/config.json`. That way everything should work out of the box.
 
 You could always change your scheduler job config.json to fit your port blueprints later, and use `terraform apply` to change it.
 
+If you know what you're doing you might also want to eddit `terraform/roles.tf`. All roles set by this project on your gcp project are set in it.
 
 ## How To Deploy
 
