@@ -22,7 +22,7 @@ The `Secret` port login - A secret with the the port logging parameters. The req
 
 
 The export function's source architecture (its this library! yay!) is described in the following chart
-![TODO: make sure this is displayed](./meida/flowchart.svg)
+![](./media/flowchart.svg)
 
 ## How To Deploy
 
