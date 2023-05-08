@@ -8,6 +8,7 @@ terraform {
 }
 
 locals {
+  # TODO: variable from commandline
   project = "port-exporter" # Google Cloud Platform Project ID
   raw_config = file("${path.module}/samples/config.json")
 }
