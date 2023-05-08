@@ -5,6 +5,7 @@ enable the required services:
 ```bash
 gcloud services enable \
     cloudbuild.googleapis.com \
+    cloudscheduler.googleapis.com \
     secretmanager.googleapis.com \
     pubsub.googleapis.com \
     cloudfunctions.googleapis.com \

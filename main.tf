@@ -9,6 +9,7 @@ terraform {
 
 locals {
   project = "port-exporter" # Google Cloud Platform Project ID
+  raw_config = file("${path.module}/samples/config.json")
 }
 
 resource "google_service_account" "exporter_account" {
@@ -64,6 +65,18 @@ resource "google_pubsub_topic" "entity_events" {
   message_retention_duration = "900s" # 15 minutes
 }
 
+resource "google_cloud_scheduler_job" "scheduler_job" {
+  project = local.project
+  name        = "scheduler_job"
+  schedule    = "*/5 * * * *"
+  region = "us-central1"
+
+  pubsub_target {
+    topic_name = google_pubsub_topic.entity_events.id
+    data       = base64encode(local.raw_config)
+  }
+}
+
 resource "google_secret_manager_secret" "port_login" {
   secret_id = "port_login"
   project = local.project
@@ -77,7 +90,6 @@ resource "google_secret_manager_secret" "port_login" {
   }  
 }
 
-
 resource "google_secret_manager_secret_version" "port_login" {
   secret = google_secret_manager_secret.port_login.name
 
@@ -87,6 +99,8 @@ resource "google_secret_manager_secret_version" "port_login" {
   })
   enabled = true
 }
+
+# === Role Bindings ===
 
 resource "google_secret_manager_secret_iam_binding" "port_binding" {
   project = local.project
