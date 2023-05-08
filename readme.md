@@ -21,7 +21,8 @@ The `SchedulerJob` scheduler job - Periodically pushes a message to the entity e
 The `Secret` port login - A secret with the the port logging parameters. The required values could be found on the bottom left of [port website](https://www.getport.io), under `Help` > `Credentials`.
 
 
-### TODO: add flowchart right about here
+The export function's source architecture (its this library! yay!) is described in the following chart
+![TODO: make sure this is displayed](./meida/flowchart.svg)
 
 ## How To Deploy
 
