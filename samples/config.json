@@ -5,11 +5,12 @@
             "resourcePath": ["instances"],
             "selectors": {
                 "project": [
-                    "plenary-ridge-385508",
+                    "port-exporter",
                     "fake-project-to-test-for-error"
                 ],
                 "zone": [
                     "us-west4-b",
+                    "us-central1", 
                     "fake-zone-to-test-for-error"
                 ]
             },
@@ -32,7 +33,7 @@
             "resourcePath": ["buckets"],
             "selectors": {
                 "project": [
-                    "plenary-ridge-385508",
+                    "port-exporter",
                     "fake-project-to-test-for-error"
                 ]
             },
@@ -57,7 +58,7 @@
             "resourcePath": ["projects", "topics"],
             "selectors": {
                 "project": [
-                    "projects/plenary-ridge-385508",
+                    "projects/port-exporter",
                     "projects/fake-project-to-test-for-error"
                 ]
             },
