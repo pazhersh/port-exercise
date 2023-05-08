@@ -94,10 +94,7 @@ resource "google_secret_manager_secret" "port_login" {
 resource "google_secret_manager_secret_version" "port_login" {
   secret = google_secret_manager_secret.port_login.name
 
-  secret_data = jsonencode({
-    "clientId": "<use your client id>",
-    "clientSecret": "<use your client secret>"
-  })
+  secret_data = jsonencode(file("${path.module}/secrets/port_login.json"))
   enabled = true
 }
 
