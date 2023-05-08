@@ -29,6 +29,6 @@ def export_entities(config):
 
     port_client = PortClient(port_login.get('clientId'), port_login.get('clientSecret'), EXPORTER_NAME, PORT_API_URL)
     for entity in entities:
-        print('exporting entity:', entity) # TODO: make logs work with GCP
+        print('exporting entity:', entity)
         port_client.upsert_entity(entity)
     

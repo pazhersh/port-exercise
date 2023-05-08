@@ -9,3 +9,4 @@ def export_resources(cloud_event):
     data_string = base64.b64decode(raw_data)
     configuration = json.loads(data_string)
     handler.export_entities(configuration)
+    print('finished exporting entities')
