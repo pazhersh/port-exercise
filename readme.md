@@ -18,11 +18,25 @@ Aditional resources include:
 
 The `SchedulerJob` scheduler job - Periodically pushes a message to the entity events. Causes a scheduled export based on a config.json set on deployment.
 
-The `Secret` port login - A secret with the the port logging parameters. The required values could be found on the bottom left of [port website](https://www.getport.io), under `Help` > `Credentials`.
+The `Secret` port login - A secret with the the port logging parameters.
 
 
 The export function's source architecture (its this library! yay!) is described in the following chart
 ![](./media/flowchart.svg)
+
+## Configuration, Configuration, Configuration
+You'll probably first want to configure your deployment.
+
+There are two things you'll need to set manually:
+- `secrets/port_login.json` - This is where you set the login parameters to port so that the exporter function could connect to it. The required values could be found on the bottom left of [port website](https://www.getport.io), under `Help` > `Credentials`.
+- `config.json` - You'll probably want to [write your own one](/media/config.md) and use. If you do, go in the terraform main.tf file and change the `raw_config` variable to your config file (should be `= file(path/to/your/file)`). \
+By default `samplse/config.json` will be used.
+
+
+For your first deployment you could configure your port with `samples/blueprints.json` and use `samples/config.json`. That way everything should work out of the box.
+
+You could always change your scheduler job config.json to fit your port blueprints later, and use `terraform apply` to change it.
+
 
 ## How To Deploy
 
